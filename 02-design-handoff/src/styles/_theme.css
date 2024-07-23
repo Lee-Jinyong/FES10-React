@@ -12,9 +12,9 @@
   --gray-600: #69686a;
   --gray-700: #4f4e50;
   --gray-800: #343435;
-  --gray-900: #1a1a1b;
-  --gray-950: #1f1f1f;
+  --gray-900: #1f1f1f;
+  --gray-950: #141415;
 
-  --background: var(--gray-950);
+  --background: var(--gray-900);
   --forground: var(--gray-50);
 }
