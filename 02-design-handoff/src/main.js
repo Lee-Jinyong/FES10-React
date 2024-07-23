@@ -16,6 +16,8 @@ const listItems = Array.from(list.querySelectorAll("li"));
 // TODO: listItems 집합 순환 드래그 가능하게 처리
 listItems.forEach((item) => {
   item.setAttribute("draggable", true);
+  // item.setAttribute('tabindex', 0);
+  // item.style.cursor = 'move';
 
   // TODO: 각 리스트 아이템에 드래그 시작, 끝 이벤트 핸들링
   item.addEventListener("dragstart", (e) => {
@@ -33,6 +35,7 @@ listItems.forEach((item) => {
 list.addEventListener("dragover", (e) => {
   // 브라우저 기본 작동 중지
   e.preventDefault();
+
   // TODO: 현재 드래깅 중인 아이템 찾기
   const draggedItem = listItems.find((item) =>
     item.classList.contains(DRAGGING_CLASSNAME)
@@ -54,5 +57,9 @@ list.addEventListener("dragover", (e) => {
     return e.clientY <= item.offsetTop + item.offsetHeight * 0.5;
   });
 
-  list.insertBefore(draggedItem, replaceItem);
+  if (replaceItem) {
+    list.insertBefore(draggedItem, replaceItem);
+  } else {
+    list.appendChild(draggedItem);
+  }
 });
