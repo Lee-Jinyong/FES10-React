@@ -19,14 +19,40 @@ listItems.forEach((item) => {
 
   // TODO: 각 리스트 아이템에 드래그 시작, 끝 이벤트 핸들링
   item.addEventListener("dragstart", (e) => {
-    console.log(e.type, e.currentTarget);
+    // console.log(e.type, e.currentTarget);
     e.currentTarget.classList.add(DRAGGING_CLASSNAME);
   });
 
   item.addEventListener("dragend", (e) => {
-    console.log(e.type, e.currentTarget);
+    // console.log(e.type, e.currentTarget);
     e.currentTarget.classList.remove(DRAGGING_CLASSNAME);
   });
 });
 
-// JavaScript Hoist
+// TODO: list 드래그 이벤트 핸들링
+list.addEventListener("dragover", (e) => {
+  // 브라우저 기본 작동 중지
+  e.preventDefault();
+  // TODO: 현재 드래깅 중인 아이템 찾기
+  const draggedItem = listItems.find((item) =>
+    item.classList.contains(DRAGGING_CLASSNAME)
+  );
+
+  // TODO: 드래깅 중인 요소가 아닌 나머지 아이템 집합 찾기
+  const restItems = listItems.filter((item) => !Object.is(item, draggedItem));
+
+  // TODO: 나머지 아이템 중에 드래깅 요소가 드래깅 중인 화면 상의 높이와
+  //       드롭 대상 요소의 화면에서의 top 위치 + (높이 * 0.5) 비교해서 교체할 아이템 찾기
+
+  // 드래깅 중인 요소가 리스트 안에서 움직일 때 화면에서의 높이 값 (이벤트 감지)
+  // console.log(e.clientY);
+
+  const replaceItem = restItems.find((item, index) => {
+    // console.log(index, item.offsetTop);
+    // console.log(index, item.offsetHeight);
+    // console.log(index, item.offsetHeight * 0.5);
+    return e.clientY <= item.offsetTop + item.offsetHeight * 0.5;
+  });
+
+  list.insertBefore(draggedItem, replaceItem);
+});
