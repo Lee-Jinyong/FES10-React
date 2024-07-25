@@ -13,7 +13,10 @@ const children = listData.items.map(({ id, title }) => {
   // TODO: React API를 사용해 <li></li> React 엘리먼트 생성
   const reactElement = React.createElement(
     "li",
-    { className: "item" },
+    {
+      key: id,
+      className: "item",
+    },
     React.createElement("img", {
       src: `/architectures/architecture-${id}.jpg`,
       alt: "",
@@ -39,7 +42,7 @@ const children = listData.items.map(({ id, title }) => {
 const list = React.createElement(
   "ul",
   { className: "architectures", lang: "en" },
-  ...children
+  children
 );
 
 // 리액트 요소(React Element === 가상 DOM 요소 노드) 생성
@@ -57,4 +60,16 @@ const container = document.getElementById("root");
 // ReactDOM Root 생성
 const reactDomRoot = ReactDOM.createRoot(container);
 
-reactDomRoot.render(list);
+// 렌더링을 처리하는 함수
+function render() {
+  reactDomRoot.render(list);
+}
+
+// 타이머 웹 API
+// SetTimeout
+
+// 특정 시간이 지나면 앱을 화면에 렌더링(표시) 하세요.
+setTimeout(render, 2000);
+
+// 특정 시간이 지나면 렌더링된 앱을 화면에서 표시하지 마세요.
+setTimeout(() => reactDomRoot.unmount(), 4000);
