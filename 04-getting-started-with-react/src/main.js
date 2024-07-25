@@ -7,6 +7,9 @@ const listData = {
   ],
 };
 
+// 반응성(Reactivity) 구현
+// 개발자 -> 데이터 수정 -> 반응성(변경 감지) -> 리액트 -> 화면 업데이트 구현
+
 // React 리스트 렌더링
 // Array.prototype.map 메서드 활용
 const children = listData.items.map(({ id, title }) => {
@@ -46,10 +49,10 @@ const list = React.createElement(
 );
 
 // 리액트 요소(React Element === 가상 DOM 요소 노드) 생성
-console.log(list);
+// console.log(list);
 
 // React.isValidElement API
-console.log(React.isValidElement(list)); // true
+// console.log(React.isValidElement(list)); // true
 
 // 리액트 앱 렌더링 (그림을 그리다, 화면에 표시)
 // ReactDOM / Server or [Client]
@@ -65,11 +68,13 @@ function render() {
   reactDomRoot.render(list);
 }
 
+render();
+
 // 타이머 웹 API
 // SetTimeout
 
 // 특정 시간이 지나면 앱을 화면에 렌더링(표시) 하세요.
-setTimeout(render, 2000);
+// setTimeout(render, 2000);
 
 // 특정 시간이 지나면 렌더링된 앱을 화면에서 표시하지 마세요.
-setTimeout(() => reactDomRoot.unmount(), 4000);
+// setTimeout(() => reactDomRoot.unmount(), 4000);
