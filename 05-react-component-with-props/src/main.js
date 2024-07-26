@@ -12,7 +12,7 @@ import ArchitectureItem from "./components/architectures/ArchitectureItem.class.
 // 리액트 앱을 렌더링 할 DOM 요소 참조
 const container = document.getElementById("react-app");
 
-// DOM 요소가 존재한다면
+// DOM 요소가 존재한다면?
 if (container) {
   // ArchitectureList 컴포넌트 -> 리액트 엘리먼트 생성
   // ArchitectureList 컴포넌트에 속성(props) 전달
@@ -25,7 +25,10 @@ if (container) {
 
   // NumberList 컴포넌트 -> 리액트 엘리먼트 생성
   // NumberList 컴포넌트에 속성(props) 전달
-  createRoot(container).render(React.createElement(NumberList, { count: 9 }));
+  const numberList = React.createElement(NumberList, { count: 9 });
+
+  // DOM 요소를 리액트 돔 루트로 만든 후, 리액트 앱 렌더링
+  createRoot(container).render(architectureList);
 }
 // 존재하지 않는다면?
 else {
