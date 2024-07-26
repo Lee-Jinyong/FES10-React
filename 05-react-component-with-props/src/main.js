@@ -5,9 +5,9 @@ import { createRoot } from "https://esm.sh/react-dom";
 import listData from "./data/list.js";
 
 // 컴포넌트 불러오기
-import NumberList from "./components/NumberList.js";
-import ArchitectureList from "./components/architectures/ArchitectureList.js";
-import ArchitectureItem from "./components/architectures/ArchitectureItem.js";
+import NumberList from "./components/NumberList.class.js";
+import ArchitectureList from "./components/architectures/ArchitectureList.class.js";
+import ArchitectureItem from "./components/architectures/ArchitectureItem.class.js";
 
 const container = document.getElementById("react-app");
 
