@@ -38,3 +38,10 @@ class NumberList extends React.Component {
 }
 
 export default NumberList;
+
+// 리액트 월드에서 컴포넌트를 사용해 리액트 엘리먼트를 생성하려면?
+// 별칭 h === React.createElement(컴포넌트_참조)
+// const list1 = h(NumberList, { id: "list-1", count: 3 });
+// const list2 = h(NumberList, { id: "list-2", count: 5 });
+// const list3 = h(NumberList, { id: "list-3", count: 11 });
+// console.log(list1, list2, list3);
