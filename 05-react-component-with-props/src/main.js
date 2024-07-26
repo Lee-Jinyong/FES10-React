@@ -5,7 +5,7 @@ import { createRoot } from "https://esm.sh/react-dom";
 import listData from "./data/list.js";
 
 // 컴포넌트 불러오기
-import NumberList from "./components/NumberList.class.js";
+import NumberList from "./components/NumberList.function.js";
 import ArchitectureList from "./components/architectures/ArchitectureList.class.js";
 import ArchitectureItem from "./components/architectures/ArchitectureItem.class.js";
 
@@ -23,8 +23,9 @@ if (container) {
     ),
   });
 
-  // DOM 요소를 리액트 돔 루트로 만든 후, 리액트 앱 렌더링
-  createRoot(container).render(architectureList);
+  // NumberList 컴포넌트 -> 리액트 엘리먼트 생성
+  // NumberList 컴포넌트에 속성(props) 전달
+  createRoot(container).render(React.createElement(NumberList, { count: 9 }));
 }
 // 존재하지 않는다면?
 else {
