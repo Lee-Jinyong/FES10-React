@@ -1,14 +1,27 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "@/styles/globals.css";
-import App from "@/App";
+import AvatarListPage from "@/pages/AvatarList";
 
-// Vite 클라이언트 환경(브라우저)에서 사용 가능한 환경 변수
-// console.log(import.meta.env);
+const container = document.getElementById("react-app");
 
-const domNode = document.getElementById("react-app");
-createRoot(domNode).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+if (container) {
+  createRoot(container).render(
+    // React.createElement(React.StrictMode, null, React.createElement(AvatarListPage))
+
+    // JSX
+    // React 고급 패턴 (Advanced Pattern)
+    // React 내장 컴포넌트
+    // Compound Component Pattern
+    // Namespace.Module
+    // <React.StrictMode>
+    //   <AvatarListPage />
+    // </React.StrictMode>
+
+    // 구조 분해 할당 + JSX
+    <StrictMode>
+      <AvatarListPage />
+    </StrictMode>
+  );
+} else {
+  console.warn('문서에 "#app" 요소가 존재하지 않습니다.');
+}
