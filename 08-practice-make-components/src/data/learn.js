@@ -1,4 +1,4 @@
-export const imageType = 'react'; // 'react' | 'vite' | 'next.js'
+export const imageType = 'next.js'; // 'react' | 'vite' | 'next.js'
 
 export const isShowReactImage = true;
 
