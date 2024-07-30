@@ -1,4 +1,4 @@
-import { typeOf } from '../utils';
+import { randomNumber, typeOf } from '../utils';
 
 // 이미지 경로 불러오기
 import reactImagePath from '../assets/react.svg?url';
@@ -35,7 +35,17 @@ function ConditionalRendering({ imageType }) {
     printText = 'kakao talk';
   }
 
+  // 3항 연산자 (표현) "식"
+  const spinnerOrVite =
+    randomNumber(0, 1) > 0.5 ? (
+      <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
+    ) : (
+      <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
+    );
+
   // JSX 반환 (마크업 생성)
+  // Q. JSX는 문(statement)이다? 아니, 표현식(expression)이다!
+  //    JSX 내부에서는 오직 식만 사용 가능하다!!!
   return (
     <>
       <dt>조건부 렌더링(conditional rendering)</dt>
@@ -51,8 +61,16 @@ function ConditionalRendering({ imageType }) {
       <dd style={{ marginTop: 12 }}>
         <p>spinner 또는 vite 이미지가 랜덤으로 화면에 렌더링 되도록 합니다.</p>
         <div className="conditionalRendering">
-          <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
-          <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
+          {spinnerOrVite}
+          {/* {randomNumber(0, 1) > 0.5 ? (
+            <img
+              className="spinner"
+              src="/icons/spinner.svg"
+              alt="로딩 중..."
+            />
+          ) : (
+            <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
+          )} */}
         </div>
       </dd>
     </>
