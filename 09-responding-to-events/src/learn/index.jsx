@@ -1,4 +1,5 @@
 import JSX_Markup from './jsx-markup';
+import ScrollUpAndDown from './scroll-up-and-down';
 
 function Learn() {
   return (
@@ -6,9 +7,11 @@ function Learn() {
       <Headline />
       <hr />
       <JSX_Markup />
+      <ScrollUpAndDown />
     </div>
   );
 }
+
 export default Learn;
 
 function Headline() {
