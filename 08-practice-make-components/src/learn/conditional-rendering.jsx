@@ -1,12 +1,10 @@
-import { randomNumber, typeOf } from '../utils';
+import { isTrueOrFalse, typeOf } from '../utils';
 
 // 이미지 경로 불러오기
+import kakaoTalkImagePath from '../assets/kakao-talk.svg?url';
+import nextJsImagePath from '../assets/next-js.svg?url';
 import reactImagePath from '../assets/react.svg?url';
 import viteImagePath from '../assets/vite.svg?url';
-import nextJsImagePath from '../assets/next-js.svg?url';
-import kakaoTalkImagePath from '../assets/kakao-talk.svg?url';
-
-console.log(kakaoTalkImagePath);
 
 // 이미지 타입 배열 관리
 const IMAGE_TYPES = ['react', 'vite', 'next.js', 'kakao talk'];
@@ -35,20 +33,31 @@ function ConditionalRendering({ imageType }) {
     printText = 'kakao talk';
   }
 
+  // 값을 반환하는 함수 실행
+  // const isShowSpinner = isTrueOrFalse(); // True Or False
+
   // 3항 연산자 (표현) "식"
-  const spinnerOrVite =
-    randomNumber(0, 1) > 0.5 ? (
-      <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
-    ) : (
-      <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
-    );
+  const spinnerOrVite = isTrueOrFalse() ? (
+    <img className="spinner" src="/icons/spinner.svg" alt="로딩 중..." />
+  ) : (
+    <img src="/vite.svg" alt="Vite" style={{ height: 42 }} />
+  );
+
+  // 논리 곱/합 연산자
+  // 그리고(and, &&), 또는(or, ||)
+  // const spinnerMessage = isShowSpinner ? '스피너 표시' : null;
+  // const spinnerMessage = isShowSpinner && '스피너 표시';
+  // const spinnerMessage = !isShowSpinner || '스피너 표시';
 
   // JSX 반환 (마크업 생성)
   // Q. JSX는 문(statement)이다? 아니, 표현식(expression)이다!
   //    JSX 내부에서는 오직 식만 사용 가능하다!!!
   return (
     <>
-      <dt>조건부 렌더링(conditional rendering)</dt>
+      <dt>
+        조건부 렌더링(conditional rendering) ({isTrueOrFalse() && '스피너 표시'}
+        )
+      </dt>
       <dd>
         <p>이미지 타입(image type)에 따라 렌더링 여부를 결정합니다.</p>
         <div className="conditionalRendering">
