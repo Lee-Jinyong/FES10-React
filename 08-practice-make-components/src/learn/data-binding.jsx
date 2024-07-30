@@ -1,4 +1,4 @@
-function DataBinding() {
+function DataBinding(props) {
   // <div> 남용
   // 요소를 선택하는 최후의 수단(기준)
   // 1. HTML에는 이미 의미적인 요소가 준비되어 있음
