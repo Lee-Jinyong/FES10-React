@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { typeOf } from '../utils';
 
 function ConditionalDisplay({ isShowImage }) {
