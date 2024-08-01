@@ -1,6 +1,5 @@
-import { statusMessages } from '../data/learn';
+import { StatusMessagesType } from '../@types/types.d';
 import { randomNumber } from '../utils';
-import { oneOf, arrayOf } from 'prop-types';
 
 function DataBinding({ statusMessages }) {
   // <div> 남용
@@ -59,5 +58,5 @@ DataBinding.propTypes = {
   // [TS] number[] -> [props-types] arrayOf(number)
   // [TS] boolean[] -> [props-types] arrayOf(bool)
   // statusMessages: arrayOf(string).isRequired, // string[] or Array<string>
-  statusMessages: arrayOf(oneOf(statusMessages)).isRequired,
+  statusMessages: StatusMessagesType.isRequired,
 };
