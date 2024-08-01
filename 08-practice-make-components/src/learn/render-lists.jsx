@@ -1,6 +1,6 @@
 import { array } from '../utils/prop-types';
 
-function RenderLists({ items /* string[], Array<string> */ }) {
+function RenderLists({ items /* { id: string, message: string }[] */ }) {
   // 함수 내부에 리스트 렌더링 코드를 작성해보세요.
   // react.d.ts
   // { @@typeof: 'Symbol(react.element)', ... }
@@ -39,17 +39,17 @@ function RenderLists({ items /* string[], Array<string> */ }) {
   let demoListUsingStatement = [];
 
   for (let item of items) {
-    demoListUsingStatement.push(<li key={item.toString()}>{item}</li>);
+    demoListUsingStatement.push(<li key={item.id}>{item.message}</li>);
   }
 
   // 식
-  const demoList = items.map((item, index) => {
-    return <li key={index.toString()}>{item}</li>;
+  const demoList = items.map((item) => {
+    return <li key={item.id}>{item.message}</li>;
   });
 
   const renderDemoList = () =>
-    items.map((item, index) => {
-      return <li key={index.toString()}>{item}</li>;
+    items.map(({ id, message }) => {
+      return <li key={id}>{message}</li>;
     });
 
   return (
@@ -58,8 +58,8 @@ function RenderLists({ items /* string[], Array<string> */ }) {
       <dd>
         {/* 직접 포함 */}
         <ul>
-          {items.map((item, index) => {
-            return <li key={index.toString()}>{item}</li>;
+          {items.map(({ id, message }) => {
+            return <li key={id}>{message}</li>;
           })}
         </ul>
         {/* 문에서 처리된 결과 값을 할당받은 지역 변수 참조 */}
@@ -76,7 +76,7 @@ function RenderLists({ items /* string[], Array<string> */ }) {
         {/* 인라인 코드 로직 삽입 (식에서 사용 가능, 다만 문 제외) */}
         <ul>
           {items.map((item) => (
-            <li key={item.toString()}>{item}</li>
+            <li key={item.id}>{item.message}</li>
           ))}
         </ul>
       </dd>
@@ -86,8 +86,8 @@ function RenderLists({ items /* string[], Array<string> */ }) {
         {/* <ul className="renderList">{reversedList}</ul> */}
 
         {/* 인라인 코드 로직 삽입 (식에서 사용 가능, 다만 문 제외) */}
-        {items.toReversed().map((item) => (
-          <li key={item.toString()}>{item}</li>
+        {items.toReversed().map((item, index) => (
+          <li key={item?.id ?? index}>{item.message}</li>
         ))}
       </dd>
       <dd>
