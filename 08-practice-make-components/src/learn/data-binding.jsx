@@ -1,5 +1,6 @@
+import { statusMessages } from '../data/learn';
 import { randomNumber } from '../utils';
-import PropTypes from '../utils/prop-types';
+import { oneOf, arrayOf } from 'prop-types';
 
 function DataBinding({ statusMessages }) {
   // <div> 남용
@@ -20,7 +21,7 @@ function DataBinding({ statusMessages }) {
   // Math.random() / Math.floor() / Math.round()
 
   const statusMessage =
-    statusMessages[randomNumber(0, statusMessages.length - 1)];
+    statusMessages[randomNumber(0, statusMessages?.length - 1)];
 
   // JSX (generate markup)
   return (
@@ -49,5 +50,14 @@ export default DataBinding;
 // Component.propTypes
 
 DataBinding.propTypes = {
-  statusMessages: PropTypes.array,
+  // 필수 속성 설정 시, isRequired 추가
+  // statusMessages: array.isRequired,
+
+  // 특정 타입만 허용하는 배열 검사
+  // Typed Array
+  // [TS] string[] -> [props-types] arrayOf(string)
+  // [TS] number[] -> [props-types] arrayOf(number)
+  // [TS] boolean[] -> [props-types] arrayOf(bool)
+  // statusMessages: arrayOf(string).isRequired, // string[] or Array<string>
+  statusMessages: arrayOf(oneOf(statusMessages)).isRequired,
 };
