@@ -5,12 +5,28 @@ function RenderLists({ items /* string[], Array<string> */ }) {
   // react.d.ts
   // { @@typeof: 'Symbol(react.element)', ... }
   // JSDOC
-  /**@type{() => React.ReactElement} */
-  const renderList = () => {
+  /**@type{() => Array<React.ReactElement>} */
+  // const renderList = (options = {}) => {
+  const renderList = ({ reverse = false } = {}) => {
+    // const { reverse = false } = options;
+    // console.log({ reverse });
+
+    let listItems = items; // 대기 → 로딩 실패 순
+
+    if (reverse) {
+      // [1] listItems = items.reverse();
+      // listItems = items.reverse(); // 참조된 items을 직접 변경 (순서 바꾸기)
+      // listItems = items.slice().reverse();
+      // listItems = [...items].reverse();
+
+      // [2] listItems = items.toReversed();
+      listItems = items.toReversed(); // ES 2023 (v14) 추가
+    }
+
     // 리스트 렌더링 결과 반환
     // - [ ] Array.prototype.forEach?
     // - [x] Array.prototype.map?
-    return items.map((item) /* string */ => {
+    return listItems.map((item) /* string */ => {
       // console.log(item);
       // JSX(React Element) Markup
       return <li key={item}>{item}</li>;
