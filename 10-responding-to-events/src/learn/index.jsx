@@ -7,12 +7,15 @@
 //    - [ ] 이벤트 핸들러 prop으로 전달
 //    - [ ] 이벤트 핸들러 prop 이름 설정
 // --------------------------------------------------------------------------
-
 import View from './View';
 import NavContents from './NavContents';
 import ScrollUpAndDown from './responding-to-events/scroll-up-and-down';
 
+let mountCount = 0;
+
 function Learn() {
+  console.log('마운트 횟수', ++mountCount);
+
   return (
     <div className="Learn">
       <NavContents />
@@ -22,5 +25,4 @@ function Learn() {
     </div>
   );
 }
-
 export default Learn;
