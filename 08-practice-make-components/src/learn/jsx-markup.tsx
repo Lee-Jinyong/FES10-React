@@ -15,7 +15,7 @@ function JSX_Markup(): JSX.Element {
 
   return (
     <dl className="descriptionList">
-      <DataBinding statusMessages={statusMessages as StatusMessage[]} />
+      <DataBinding statusMessages={statusMessages} />
       <ConditionalRendering imageType={imageType} />
       <ConditionalDisplay isShowImage={isShowReactImage} />
       <RenderLists reactLibrary={reactLibrary} items={statusMessagesWithID} />
