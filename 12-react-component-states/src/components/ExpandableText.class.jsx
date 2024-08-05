@@ -25,23 +25,22 @@ class ExpandableText extends Component {
   render() {
     const { isExpand } = this.state;
     const { children, limit, ...restProps } = this.props;
-
     // children.length [campare] limit
     // 파생된 상태 설정
     let renderText = children;
-
     const isExpandable = children.length > limit;
-
     if (isExpandable) {
       renderText = children.toString().slice(0, limit) + '...';
     }
 
+    const buttonLabel = isExpand ? '축소' : '확장';
+
     return (
       <div className="ExpandableText" {...restProps}>
-        <p>{renderText}</p>
+        <p>{isExpand ? children : renderText}</p>
         {isExpandable && (
           <button type="button" onClick={this.handleExpand}>
-            {isExpand ? '축소' : '확장'}
+            {buttonLabel}
           </button>
         )}
       </div>
@@ -50,6 +49,9 @@ class ExpandableText extends Component {
 
   handleExpand = () => {
     // 상태 업데이트 기능 추가
+    this.setState({
+      isExpand: !this.state.isExpand,
+    });
   };
 }
 
