@@ -5,6 +5,7 @@ ExtandableText.propTypes = {
   limit: number,
 };
 
+/**@type {({ text, limit }: { text: string, limit?: number }) => JSX.Element} */
 function ExtandableText({ text: originalText, limit = 100 }) {
   let displayText = '';
 
