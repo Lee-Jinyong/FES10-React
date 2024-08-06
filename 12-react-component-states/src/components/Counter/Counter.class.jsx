@@ -12,15 +12,88 @@
 // ------------------------------------------------------------------------------
 
 import { Component } from 'react';
+import { number } from 'prop-types';
 
 class Counter extends Component {
-  render() {
-    return <></>;
+  static propTypes = {
+    count: number,
+    step: number,
+    min: number,
+    max: number,
+  };
+
+  static defaultProps = {
+    count: 1,
+    step: 1,
+    min: 1,
+    max: 1000,
+  };
+
+  constructor(props) {
+    super(props);
+
+    const { count: initialCount, min, max } = props;
+
+    if (initialCount < min || initialCount > max) {
+      throw new Error(`count 값이 min 보다 작거나, max보다 큽니다.`);
+    }
+
+    this.state = {
+      count: initialCount,
+    };
+
+    // 메서드에 this 연결
+    // this.handleDecrease = this.handleDecrease.bind(this);
+    // this.handleIncrease = this.handleIncrease.bind(this);
   }
+
+  render() {
+    const { count } = this.state;
+    const { step, min, max } = this.props;
+
+    const isDisabledDecrease = count <= min;
+    const isDisabledIncrease = count >= max;
+
+    return (
+      <div className="Counter">
+        <button
+          type="button"
+          disabled={isDisabledDecrease}
+          onClick={this.handleDecrease}
+        >
+          -{step}
+        </button>
+        <output>{this.state.count}</output>
+        <button
+          type="button"
+          disabled={isDisabledIncrease}
+          onClick={this.handleIncrease}
+        >
+          +{step}
+        </button>
+      </div>
+    );
+  }
+
+  // Class Fields
+  // this.handleDecrease
+  handleDecrease = () => {
+    const nextCount = this.state.count - this.props.step;
+    this.setState({
+      count: nextCount,
+    });
+  };
+
+  // this.handleIncrease
+  handleIncrease = () => {
+    const nextCount = this.state.count + this.props.step;
+    this.setState({
+      count: nextCount,
+    });
+  };
 }
 
 // React 개발 도구(devTools)에 표시되는 이름 설정
 // 참고: https://ko.legacy.reactjs.org/docs/react-component.html#displayname
 Counter.displayName = 'CounterClass';
-
 export default Counter;

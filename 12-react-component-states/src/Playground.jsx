@@ -5,7 +5,7 @@ function Playground() {
   return (
     <>
       <Counter count={3} min={2} max={6} />
-      <CounterClass />
+      <CounterClass min={9} count={10} step={10} />
     </>
   );
 }
