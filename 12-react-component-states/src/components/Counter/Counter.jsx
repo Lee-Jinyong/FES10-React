@@ -24,8 +24,9 @@ Counter.propTypes = {
 
 /**@type {({ count?: number, step?: number, min?: number, max?: number }) => JSX.Element} */
 function Counter({ count: initialCount = 1, step = 1, min = 1, max = 1000 }) {
-  // 참고: https://react.dev/reference/react/useState#usestate
   const [count, setCount] = useState(() => {
+    // 초기화 함수 활용
+    // 참고: https://ko.react.dev/reference/react/useState#avoiding-recreating-the-initial-state
     if (initialCount < min || initialCount > max) {
       throw new Error(`count 값이 min 보다 작거나, max보다 큽니다.`);
     }
@@ -38,13 +39,11 @@ function Counter({ count: initialCount = 1, step = 1, min = 1, max = 1000 }) {
   // console.log(count, setCount);
 
   const handleDecrease = () => {
-    // console.log('decrease count');
     const nextCount = count - step;
     setCount(nextCount);
   };
 
   const handleIncrease = () => {
-    // console.log('increase count');
     const nextCount = count + step;
     setCount(nextCount);
   };
