@@ -7,8 +7,6 @@ UsersList.propTypes = {
 };
 
 function UsersList({ users }) {
-  console.log(users);
-
   return (
     <ul className="UsersList">
       {users.map((user) => (
