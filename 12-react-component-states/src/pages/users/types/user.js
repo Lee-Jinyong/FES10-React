@@ -6,14 +6,14 @@ export const UserType = exact({
   username: string.isRequired,
   email: string.isRequired,
   phone: string.isRequired,
-  website: string.isRequired,
-  province: string.isRequired,
-  city: string.isRequired,
-  district: string.isRequired,
-  street: string.isRequired,
-  zipcode: string.isRequired,
-  createdAt: string.isRequired,
-  updatedAt: string.isRequired,
+  website: string,
+  province: string,
+  city: string,
+  district: string,
+  street: string,
+  zipcode: string,
+  createdAt: string,
+  updatedAt: string,
 });
 
-export const UserListType = arrayOf(UserType);
+export const UsersListType = arrayOf(UserType);
