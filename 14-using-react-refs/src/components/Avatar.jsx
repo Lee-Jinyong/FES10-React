@@ -1,20 +1,12 @@
-// --------------------------------------------------------------------------
-// ✅ 테스트 시나리오
-// --------------------------------------------------------------------------
-// - 컴포넌트 렌더링 관점에서 어떤 테스트를 수행할 지 고민해 작성하세요.
-// --------------------------------------------------------------------------
-
-import { number, string } from 'prop-types';
-import { StatusMessagesType } from '@/@types/entries.d';
+import { number, oneOf, string } from 'prop-types';
 
 Avatar.propTypes = {
   name: string.isRequired,
   photo: string.isRequired,
-  status: StatusMessagesType,
+  status: oneOf(['offline', 'online', 'dont-disturb', 'away']),
   size: number,
 };
 
-/**@type {({ name, photo, status, size }: { name: string, photo: string, status?: 'offline' | 'online' | 'dont-disturb' | 'away', size?: number }) => JSX.Element} */
 function Avatar({ name, photo, status = 'offline', size = 64 }) {
   let iconPath = '';
   let statusMessage = '';
