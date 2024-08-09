@@ -7,6 +7,7 @@
 // - [x] 게임 진행을 처리하는 함수 로직을 작성하고, 리액트에게 다음 상태 변경에 대해 말해주세요.
 // - [ ] 게임이 이겼는 지, 졌는 지 확인하는 승리 조건을 게임의 상수로 선언합니다.
 // --------------------------------------------------------------------------
+
 import { useState } from 'react';
 import {
   INITIAL_SQUARES,
@@ -29,15 +30,27 @@ function Squares() {
 
   // 게임을 진행하는 함수
   const handlePlayGame = (index) => () => {
+    // 사용자가 액션을 취해 게임을 진행하려 할 때?
+    // 이미 게임이 종료된 경우?
+    if (winnerInfo) {
+      // GAME OVER 메시지를 사용자에게 출력
+      alert('GAME OVER');
+      // 함수 실행되지 않도록 함수 종료(return)
+      return;
+    }
+
+    // 아직 게임이 진행중인 경우?
+    // 아래 코드 실행
+
     // 아직 진행 중이라면? 게임 진행 (리액트에게 렌더 요청 -> 화면 변경)
     setSquares((prevSquares) => {
       const nextSquares = prevSquares.map((square, idx) => {
         return idx === index ? currentPlayer : square;
       });
+
       return nextSquares;
     });
   };
-
   // [게임 파생된 상태] ----------------------------------------------------------
 
   // 게임이 끝났는가? 아니면 아직 진행 중인가?
@@ -47,7 +60,6 @@ function Squares() {
   // const winner = checkeWinner(squares);
   // console.log('승자는?', winner);
   const winnerInfo = checkeWinner(squares);
-  console.log('승자는?', winnerInfo);
 
   // 게임 순서 (0, 1, 2, 3, ...)
   const gameIndex = squares.filter(Boolean).length; // 0
