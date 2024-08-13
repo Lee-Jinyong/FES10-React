@@ -11,16 +11,7 @@
     border-color: var(--accent-color);
   }
 
-  svg {
 
-    * {
-      visibility: hidden;
-    }
-
-    circle {
-      transform-origin: 189px center;
-    }
-  }
 }
 
 .button {
