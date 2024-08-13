@@ -7,4 +7,11 @@
   &:hover {
     border-color: var(--accent-color);
   }
+
+
+  svg {
+    * {
+      visibility: visible;
+    }
+  }
 }
