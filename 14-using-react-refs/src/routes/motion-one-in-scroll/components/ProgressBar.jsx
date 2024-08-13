@@ -1,12 +1,12 @@
 // --------------------------------------------------------------------------
 // ✅ 스크롤 애니메이션
 // --------------------------------------------------------------------------
-// - [ ] 대상 요소의 스크롤 위치에 따라 프로그래스바 scaleX 값이 애니메이션 되도록 설정합니다.
-// - [ ] 대상 요소의 스크롤 위치에 따라 아웃풋 텍스트 콘텐츠 값이 %로 출력되도록 설정합니다.
+// - [x] 대상 요소의 스크롤 위치에 따라 프로그래스바 scaleX 값이 애니메이션 되도록 설정합니다.
+// - [x] 대상 요소의 스크롤 위치에 따라 아웃풋 텍스트 콘텐츠 값이 %로 출력되도록 설정합니다.
 // --------------------------------------------------------------------------
 
 import { useRef } from 'react';
-import { animate, scroll } from 'motion';
+import { scroll } from 'motion';
 import { oneOf, string } from 'prop-types';
 import S from './Progress.module.css';
 
@@ -27,10 +27,13 @@ function ProgressBar({ containerSelector = null, axis = 'y' }) {
 
     // 스크롤 애니메이션
     scroll(({ y: { progress } }) => {
-      progressBarRef.current.style.transform = `scaleX(${progress})`;
+      const progressBar = progressBarRef.current;
+      const output = outputRef.current;
 
-      const percentValue = (progress * 100).toFixed(0) + '%';
-      outputRef.current.value = percentValue;
+      if (progressBar && output) {
+        progressBarRef.current.style.transform = `scaleX(${progress})`;
+        output.value = (progress * 100).toFixed(0) + '%';
+      }
     }, scrollOptions);
   };
 
