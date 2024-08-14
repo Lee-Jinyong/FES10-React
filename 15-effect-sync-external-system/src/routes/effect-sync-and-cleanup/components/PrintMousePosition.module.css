@@ -1,4 +1,5 @@
 .component {
+  margin-block-start: 40px;
   color: #450fbf;
 
   output {
