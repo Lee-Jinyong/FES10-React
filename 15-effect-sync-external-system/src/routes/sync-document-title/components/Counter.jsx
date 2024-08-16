@@ -59,20 +59,22 @@ function Counter() {
   const [step, setStep] = useState(1);
   useEffect(() => {
     console.log(`어머!!! 우리 ${step}이 변경했어요!`);
-  }, [step]);
-
+  }, [step])
+  
   // 리액트 시스템 (반응성 상태 변경)
   const [count, setCount] = useState(10);
 
   // 외부 시스템 (반응성 상태 변경에 따라 반응하지 않음, 그래서 이펙트 콜백 필요)
-  useEffect(() => {
-    // 반응성 상태가 변경되면
-    // 외부 시스템인 브라우저의 문서 제목을 변경하려 한다.
-    console.log(
-      'count 반응성 상태 데이터가 변경되었기 때문에 이펙트가 호출됩니다.'
-    );
-    document.title = `(${count}) ` + DOCUMENT_TITLE;
-  }, [count]);
+  useEffect(
+    () => {
+      // 반응성 상태가 변경되면
+      // 외부 시스템인 브라우저의 문서 제목을 변경하려 한다.
+      console.log('count 반응성 상태 데이터가 변경되었기 때문에 이펙트가 호출됩니다.');
+      document.title = `(${count}) ` + DOCUMENT_TITLE;
+    },
+    [count]
+  );
+  
 
   const handleDecrease = () => {
     let nextCount = count - step;
