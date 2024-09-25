@@ -1,15 +1,8 @@
 {
-  // 에디터 설정
-  "editor.wordWrap": "off",
-  "editor.inlayHints.enabled": "offUnlessPressed",
-
-  // 검색 제외
   "search.exclude": {
     "**/coverage": true,
     "**/node_modules": true
   },
-
-  // 파일 제외
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -22,15 +15,13 @@
       "when": "$(basename)"
     }
   },
-
-  // 파일 형식
   "files.associations": {
+    "*.css": "tailwindcss",
     "*.jsx": "javascriptreact",
     "*.tsx": "typescriptreact",
     ".npmrc": "dotenv"
   },
 
-  // 언어 별, 포멧터 설정
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features",
   },
@@ -47,7 +38,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
-  // Emmet 설정
   "emmet.variables": {
     "charset": "UTF-8",
     "lang": "ko-KR"
@@ -70,7 +60,6 @@
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
 
-  // HTML 설정
   "html.autoClosingTags": true,
   "html.validate.styles": true,
   "html.validate.scripts": true,
@@ -80,14 +69,20 @@
   "html.format.maxPreserveNewLines": 1,
   "html.format.wrapAttributes": "force-expand-multiline",
 
-  // CSS 설정
   "css.validate": true,
   "css.lint.vendorPrefix": "ignore",
   "css.lint.unknownAtRules": "ignore",
   "css.lint.unknownProperties": "ignore",
   "css.completion.completePropertyWithSemicolon": true,
 
-  // JavaScript 설정
+  "editor.wordWrap": "off",
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.codeActionsOnSave": {
+    // "source.organizeImports": "explicit",
+    // "source.addMissingImports": "explicit",
+    // "source.fixAll.eslint": "explicit",
+  },
+
   "javascript.autoClosingTags": true,
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
@@ -101,7 +96,6 @@
   "javascript.suggest.autoImports": true,
   "javascript.suggest.paths": false,
 
-  // TypeScript 설정
   "typescript.autoClosingTags": true,
   "typescript.format.enable": false,
   "typescript.validate.enable": true,
@@ -115,9 +109,16 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.disableAutomaticTypeAcquisition": true,
   "typescript.suggest.autoImports": true,
-  "typescript.suggest.paths": false,
+  "typescript.suggest.paths": true,
   
-  // Error Lens 설정
+  "path-intellisense.mappings": {
+    "@": "workspaceFolder/src"
+  },
+
+  "autoimport.filesToScan": "**/*.{js,jsx,ts,tsx,css,svg,jpg,jpeg,png}",
+  "autoimport.spaceBetweenBraces": true,
+  "autoimport.autoComplete": true,
+  
   "errorLens.enabled": true,
   "errorLens.codeLensEnabled": false,
   "errorLens.fontSize": "14px",
@@ -130,5 +131,37 @@
     "info": "📢",
     "hint": "🔔"
   },
+  
+  "codeium.enableCodeLens": false,
+  "codeium.enableConfig": { 
+    "*": true,
+    "html": false,
+    "css": false,
+    "javascript": false,
+    "javascriptreact": false,
+    "typescript": false,
+    "typescriptreact": false,
+  },
 
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*Classes.*",
+    ".*Classnames.*"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["/\\*tw\\*/ ([^]*) /\\*tw\\*/", "'([^']*)'"],
+    ["clsx\\(([^)]*)\\)", "(?:\"|'|`)([^(?:\"|'|`)]*)(?:\"|'|`)"]
+  ],
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "javascriptreact": "html",
+    "plaintext": "html"
+  },
+  "tailwindCSS.experimental.configFile": "./tailwind.config.js",
+  "tailwind-fold.foldStyle": "QUOTES",
+  "tailwind-fold.unfoldIfLineSelected": true,
+  "tailwind-fold.unfoldedTextOpacity": 0.9,
+  "tailwind-fold.autoFold": false,
 }
